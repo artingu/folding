@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: folding
+  labels:
+    name: folding
+spec:
+  containers:
+    - name: folding
+      image: artingu/folding-at-home:latest
