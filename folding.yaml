@@ -1,10 +1,22 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: folding
-  labels:
-    name: folding
+  name: foldingapp
 spec:
-  containers:
-    - name: folding
-      image: artingu/folding-at-home:latest
+  replicas: 2
+  selector:
+    matchLabels:
+      app: folding
+  template:
+    metadata:
+      labels:
+        app: folding
+    spec:
+      containers:
+      - name: folding
+        image: artingu/folding-at-home:latest
+        resources:
+          limits:
+            cpu: "900m"
+            memory: "1Gi"
+        
